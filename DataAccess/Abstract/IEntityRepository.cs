@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using Entities.Abstract;
 
 namespace DataAccess.Abstract
 {
-    public interface IEntityRepository<T>
+    //generic constraint-yani generic olarak gelen tipe kısıtlama ekleme
+    //class: referans tip olabilir(bizim tanımladıklarımızın yanında sistemin tanıdıkları da kabul
+    //IEntity : IEntity olabilir veya IEntity implemente eden bir class olabilir 
+    //new(): new() lenebilir olmalı yani doğrudan IEntity nin kullanımının önüne geçtik.
+    public interface IEntityRepository<T> where T:class,IEntity,new()
     {
         List<T> GetAll(Expression<Func<T,bool>> filter=null);
         T Get(Expression<Func<T, bool>> filter);
