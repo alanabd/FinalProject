@@ -10,12 +10,21 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
-            int sayi = productManager.GetByUnitPrice(15, 20).Count;
-            Console.WriteLine("10 ile 20 arasındaki veri sayısı {0} dır", sayi.ToString());
-            foreach (var item in productManager.getProductDetails())
+
+            var result = productManager.GetAll();
+            
+            if (result.Success)
             {
-                Console.WriteLine(item.ProductName+"\t\t\t\t"+item.CategoryName);
+                foreach (var item in result.Data)
+                {
+                    Console.WriteLine(item.ProductName + "\t\t\t\t" + result.Message);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
             //CategoryManager category = new CategoryManager(new EfCategoryDal());
             //Console.WriteLine(category.GetById(1).CategoryName);
 
