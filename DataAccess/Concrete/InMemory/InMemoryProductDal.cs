@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -86,6 +87,11 @@ namespace DataAccess.Concrete.InMemory
         public List<Product> GetAllCategory(int categoryId)
         {
             return _products.Where(s => s.CategoryID == categoryId).ToList();
+        }
+
+        public List<ProductDetailDto> getProductDetailDto()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)

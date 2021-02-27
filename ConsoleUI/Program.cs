@@ -11,11 +11,13 @@ namespace ConsoleUI
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
             int sayi = productManager.GetByUnitPrice(15, 20).Count;
-            Console.WriteLine("10 ile 20 arasındaki veri sayısı {0} dır",sayi.ToString());
-            foreach (var item in productManager.GetByUnitPrice(11,20))
+            Console.WriteLine("10 ile 20 arasındaki veri sayısı {0} dır", sayi.ToString());
+            foreach (var item in productManager.getProductDetails())
             {
-                Console.WriteLine(item.ProductName);
+                Console.WriteLine(item.ProductName+"\t\t\t\t"+item.CategoryName);
             }
+            //CategoryManager category = new CategoryManager(new EfCategoryDal());
+            //Console.WriteLine(category.GetById(1).CategoryName);
 
         }
     }

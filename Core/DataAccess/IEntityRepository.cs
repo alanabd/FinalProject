@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using Entities.Abstract;
+using Core.Entities;
 
-namespace DataAccess.Abstract
+
+namespace Core.DataAccess
 {
     //generic constraint-yani generic olarak gelen tipe kısıtlama ekleme
     //class: referans tip olabilir(bizim tanımladıklarımızın yanında sistemin tanıdıkları da kabul
