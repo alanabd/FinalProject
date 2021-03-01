@@ -30,11 +30,11 @@ namespace Business.Concrete
             _productDal.Add(product);
             return new SuccessResult(Messages.PrductAdded);
         }
-
+        
         public IDataResult<List<Product>> GetAll()
         {
             //iş kodları
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour==5)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
@@ -58,6 +58,21 @@ namespace Business.Concrete
         public IDataResult<List<ProductDetailDto>> getProductDetails()
         {
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.getProductDetailDto(), "ürünler listelendi");
+        }
+
+        public IResult Update(Product product)
+        {
+            _productDal.Update(product);
+            return new SuccessResult();
+        }
+
+        public IResult Delete(Product product)
+        {
+            _productDal.Delete(product);
+            
+
+            return new SuccessResult();
+
         }
     }
 }
